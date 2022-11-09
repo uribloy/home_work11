@@ -2,12 +2,12 @@ class User{
     #firstname;
     #lastname;
     #useraddres;
-    mybook;
+    #mybook;
     constructor(firstname, lastname, useraddres){
         this.#firstname=firstname;
         this.#lastname=lastname;
         this.#useraddres=useraddres;
-        this.mybook=[];
+        this.#mybook=[];
     }
     //   מאפשר גישה חיצונית לשם משתמש
     fullname(){
@@ -15,7 +15,8 @@ class User{
     }
 
     addborrowbook(book){
-        this.mybook.push(book);
+       this.#mybook.push(book);
+       return this.#mybook;
     }
     borrowreport(){
         console.log(`The list of books I borrowed: ${this.mybook.join(' , ')}`)
@@ -38,6 +39,7 @@ user1.addborrowbook(book2);
 user1.addborrowbook(book4); 
 user2.addborrowbook(book1);
 user2.addborrowbook(book3); 
+user3.addborrowbook(book2);
 user3.addborrowbook(book4);
 //  console.log(user1);
 // console.log(user1.borrowreport()); // הדפסת דוח ספרים של המשתמש
@@ -54,7 +56,7 @@ class Report {
     }
     printreport(){
         this.users.forEach(user=>{
-            console.log(user.fullname() +', borrow the books: '+user.mybook);
+            console.log(user.fullname() +', borrow the books: '+user.addborrowbook());
         });
     }
 }
